@@ -1,0 +1,18 @@
+{% extends "myartists/base.html" %}
+
+{% block content %}
+
+<h1>
+    {{ song.name }}
+    {% if user == song.user %}
+        (<a href="{% url 'myartists:song_edit' song.artist.id song.id %}">edit</a>)
+    {% endif %}
+</h1>
+<p>{{ song.description }}</p>
+<p>Served by <a href="{% url 'myartists:artist_detail' song.artist.id %}">{{ song.artist.name }}</a></p>
+
+{% endblock %}
+
+{% block footer %}
+    Created by {{ song.user }} on {{ song.date }}
+{% endblock %}
